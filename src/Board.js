@@ -12,14 +12,14 @@ class Board extends Component {
   }
   checkWinner() {
     let grid = this.state.grid.slice()
-    if( (grid[0]!=null && grid[0] == grid[1] && grid[1] == grid[2]) || //rows
-        (grid[3]!=null && grid[3] == grid[4] && grid[4] == grid[5]) ||
-        (grid[6]!=null && grid[6] == grid[7] && grid[7] == grid[8]) ||
-        (grid[0]!=null && grid[0] == grid[3] && grid[3] == grid[6]) || //columns
-        (grid[1]!=null && grid[1] == grid[4] && grid[4] == grid[7]) ||
-        (grid[2]!=null && grid[2] == grid[5] && grid[5] == grid[8]) ||
-        (grid[0]!=null && grid[0] == grid[4] && grid[4] == grid[8]) || //diagonal
-        (grid[2]!=null && grid[2] == grid[4] && grid[4] == grid[6])
+    if( (grid[0]!=null && grid[0] === grid[1] && grid[1] === grid[2]) || //rows
+        (grid[3]!=null && grid[3] === grid[4] && grid[4] === grid[5]) ||
+        (grid[6]!=null && grid[6] === grid[7] && grid[7] === grid[8]) ||
+        (grid[0]!=null && grid[0] === grid[3] && grid[3] === grid[6]) || //columns
+        (grid[1]!=null && grid[1] === grid[4] && grid[4] === grid[7]) ||
+        (grid[2]!=null && grid[2] === grid[5] && grid[5] === grid[8]) ||
+        (grid[0]!=null && grid[0] === grid[4] && grid[4] === grid[8]) || //diagonal
+        (grid[2]!=null && grid[2] === grid[4] && grid[4] === grid[6])
     )
       this.setState({hasWinner: true})
     else{
@@ -38,7 +38,7 @@ class Board extends Component {
   renderSquare(i) {
     let status
     if(this.state.grid[i] == null) status = ''
-    else if(this.state.grid[i] == 'X') status = 'X'
+    else if(this.state.grid[i] === 'X') status = 'X'
     else status = 'O'
     return <Square stat = {status} click = {() => this.handleClick(i)} />
   }
@@ -71,16 +71,16 @@ class Board extends Component {
   }
   handleClick(i) {
     let player = this.state.player
-    if(this.state.hasWinner == false && this.state.grid[i] == null){
+    if(this.state.hasWinner === false && this.state.grid[i] == null){
         let newGrid = this.state.grid.slice()
-        if(player == 'Player: X') newGrid[i] = 'X'
+        if(player === 'Player: X') newGrid[i] = 'X'
         else                    newGrid[i] = 'O'
         //callback makes sure call checkWinner after setState finishes
         this.setState({grid : newGrid}, () => this.checkWinner())
     }
   }
   handleEnd() {
-    if(this.state.hasWinner == false && !this.tiedGame()){
+    if(this.state.hasWinner === false && !this.tiedGame()){
       let playerNxtTurn = (this.state.player === 'Player: X') ? 'Player: O' : 'Player: X'
       this.setState({
         player : playerNxtTurn,
@@ -91,7 +91,7 @@ class Board extends Component {
   render() {
     let restartMsg =  ' click start to play again'
     let message
-    if(this.state.hasWinner == true) message = this.state.player + ' is the winner!' + restartMsg
+    if(this.state.hasWinner === true) message = this.state.player + ' is the winner!' + restartMsg
     else{
       if(this.tiedGame()) message = 'Tied game,' + restartMsg
       else message = this.state.player + '\'s turn'

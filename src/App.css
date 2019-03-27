@@ -4,6 +4,10 @@
   vertical-align: top;
 }
 
+.hide {
+  display: none;
+}
+
 .App {
   text-align: center;
 }

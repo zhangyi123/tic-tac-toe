@@ -6,7 +6,7 @@ This project is made up with 2 components which are separated into different fil
 
 The main Board contains three state variables: grid, player, and hasWinner.
   grid are passed to 9 Square components to be rendered accordingly.
-  player is used for status message when the game changes the state
+  player is used for status message when the game changes the state.
   hasWinner is used to check if the game ends at that turn.
 
 ## Available Scripts

@@ -11,7 +11,12 @@ The main Board contains three state variables: grid, player, and hasWinner.
 
 ## Available Scripts
 
+
+
 In the project directory, you can run:
+
+### `npm install`
+build dependencies
 
 ### `npm start`
 

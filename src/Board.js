@@ -27,6 +27,14 @@ class Board extends Component {
       this.setState({player : playerNxtTurn})
     }
   }
+  tiedGame() {
+    for(let i=0; i<9; i++){
+      if(this.state.grid[i] == null){
+        return false
+      }
+    }
+    return true
+  }
   renderSquare(i) {
     let status
     if(this.state.grid[i] == null) status = ''
@@ -72,7 +80,7 @@ class Board extends Component {
     }
   }
   handleEnd() {
-    if(this.state.hasWinner == false){
+    if(this.state.hasWinner == false && !this.tiedGame()){
       let playerNxtTurn = (this.state.player === 'Player: X') ? 'Player: O' : 'Player: X'
       this.setState({
         player : playerNxtTurn,
@@ -81,10 +89,13 @@ class Board extends Component {
     }
   }
   render() {
+    let restartMsg =  ' click start to play again'
     let message
-    if(this.state.hasWinner == true) message = this.state.player
-                                               + ' is the winner! click start to play again'
-    else message = this.state.player + '\'s turn'
+    if(this.state.hasWinner == true) message = this.state.player + ' is the winner!' + restartMsg
+    else{
+      if(this.tiedGame()) message = 'Tied game,' + restartMsg
+      else message = this.state.player + '\'s turn'
+    }
     return (
       <div>
         <h1>{message}</h1>

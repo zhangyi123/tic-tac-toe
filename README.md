@@ -1,4 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a tic tac toe game.
+There are two buttons: you can click the 'Start' button to start/restart a game. You can click the 'Give up' button to end a game. When it is someone's turn(either 'X' or 'O'), clicking 'Give up' will result in the other player's victory.
+The game can end in 2 ways: 1 someone's giving up, 2 a winner move or the board is all filled up(tieGame)
+
+This project is made up with 2 components which are separated into different files for clarity puporse: Board(the main) and Square. 9 squares make up the whole board.
+
+The main Board contains three state variables: grid, player, and hasWinner.
+  grid are passed to 9 Square components to be rendered accordingly.
+  player is used for status message when the game changes the state
+  hasWinner is used to check if the game ends at that turn.
 
 ## Available Scripts
 
